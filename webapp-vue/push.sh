@@ -1,0 +1,1 @@
+docker push registry.gitlab.com/promises/deployment/webapp-vue
