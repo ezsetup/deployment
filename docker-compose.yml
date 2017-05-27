@@ -1,0 +1,41 @@
+version: '3'
+services:
+  web:
+    image: registry.gitlab.com/promises/deployment/webapp-vue:0.17.05
+    ports:
+    - "80:80"
+  reverse-proxy:
+    image: registry.gitlab.com/promises/deployment/reverse-proxy:0.17.05
+    ports: 
+    - "5002:5002"
+    links:
+    - api-server
+  api-server:
+    image: registry.gitlab.com/promises/deployment/api-server:0.17.05
+    expose:
+    - "808"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_TOKEN_DB=1
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_HOST=pg
+      - POSTGRES_PORT=5432
+      - POSTGRES_POOL_MIN_CONN=10
+      - POSTGRES_POOL_MAX_CONN=100
+    links:
+    - redis
+  redis:
+    image: redis:3.2
+    expose: 
+      - "6379"
+  pg:
+    image: registry.gitlab.com/promises/pg
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    
+    

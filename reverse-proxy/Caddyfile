@@ -1,0 +1,3 @@
+:5002 {
+  proxy / api-server:8080
+}
