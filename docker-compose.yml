@@ -27,8 +27,15 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_POOL_MIN_CONN=10
       - POSTGRES_POOL_MAX_CONN=100
+    extra_hosts:
+      - "nova-cloud-controller.maas:172.20.0.14"
+      - "keystone.maas:172.20.0.13" 
+      - "cinder.maas:172.20.0.19" 
+      - "glance.maas:172.20.0.20" 
+      - "neutron-api.maas:172.20.0.17" 
+      - "heat.maas:172.20.0.18" 
     links:
-    - redis
+      - redis
   redis:
     restart: unless-stopped
     image: redis:3.2
