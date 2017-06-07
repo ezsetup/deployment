@@ -47,10 +47,11 @@ services:
     expose:
       - "5432"
     volumes:
-      - pg-data-volume:/var/lib/postgresql/dat
+      - pg-data-volume:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
+      - PG_DATA=/var/lib/postgresql/data/pgdata
 
 volumes:
   pg-data-volume:
