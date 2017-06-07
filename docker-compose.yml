@@ -1,19 +1,19 @@
 version: '3'
 services:
   web:
-    image: registry.gitlab.com/promises/deployment/webapp-vue:0.17.05
+    image: registry.gitlab.com/promises/deployment/webapp-vue:$WEBAPP_VUE_VERSION
     restart: unless-stopped
     ports:
     - "80:80"
   reverse-proxy:
-    image: registry.gitlab.com/promises/deployment/reverse-proxy:0.17.05
+    image: registry.gitlab.com/promises/deployment/reverse-proxy:$REVERSE_PROXY_VERSION
     restart: unless-stopped
     ports: 
     - "5002:5002"
     links:
     - api-server
   api-server:
-    image: registry.gitlab.com/promises/deployment/api-server:0.17.05
+    image: registry.gitlab.com/promises/deployment/api-server:$API_SERVER_VERSION
     restart: unless-stopped
     expose:
     - "8080"
