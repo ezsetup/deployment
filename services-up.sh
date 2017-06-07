@@ -30,7 +30,7 @@ case $1 in
 all)
     sudo docker pull registry.gitlab.com/promises/deployment/reverse-proxy:$REVERSE_PROXY_VERSION \
         && echo "OK" || exit
-    sudo docker pull registry.gitlab.com/promises/deployment/server:$SERVER_VERSION \
+    sudo docker pull registry.gitlab.com/promises/deployment/server:$API_SERVER_VERSION \
         && echo "OK" || exit
     sudo docker pull registry.gitlab.com/promises/pg:$PG_VERSION \
         && echo "OK" || exit
