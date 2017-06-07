@@ -28,6 +28,7 @@ fi
 if [ -z $WEBAPP_VUE_VERSION ]; then
     echo -e "\033[1;31m WEBAPP_VUE_VERSION needs to be set \033[0m"
     exit
+fi
 
 case $1 in
 all)
