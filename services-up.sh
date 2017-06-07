@@ -38,7 +38,7 @@ all)
         && echo "OK" || exit
     sudo docker pull registry.gitlab.com/promises/pg:$PG_VERSION \
         && echo "OK" || exit
-    sudo docker pull registry.gitlab.com/promises/webapp-vue:$WEBAPP_VUE_VERSION \
+    sudo docker pull registry.gitlab.com/promises/deployment/webapp-vue:$WEBAPP_VUE_VERSION \
         && echo "OK" || exit
     sudo docker-compose up -d
     ;;
