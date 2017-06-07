@@ -25,6 +25,9 @@ if [ -z $PG_VERSION ]; then
     echo -e "\033[1;31m PG_VERSION needs to be set \033[0m"
     exit
 fi
+if [ -z $WEBAPP_VUE_VERSION ]; then
+    echo -e "\033[1;31m WEBAPP_VUE_VERSION needs to be set \033[0m"
+    exit
 
 case $1 in
 all)
@@ -33,6 +36,8 @@ all)
     sudo docker pull registry.gitlab.com/promises/deployment/api-server:$API_SERVER_VERSION \
         && echo "OK" || exit
     sudo docker pull registry.gitlab.com/promises/pg:$PG_VERSION \
+        && echo "OK" || exit
+    sudo docker pull registry.gitlab.com/promises/webapp-vue:$WEBAPP_VUE_VERSION \
         && echo "OK" || exit
     sudo docker-compose up -d
     ;;
