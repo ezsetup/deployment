@@ -43,9 +43,9 @@ all)
     sudo docker-compose up -d
     ;;
 api-server)
-    sudo docker pull registry.gitlab.com/promises/deployment/server:$SERVER_VERSION \
+    sudo docker pull registry.gitlab.com/promises/deployment/api-server:$SERVER_VERSION \
         && echo "OK" || exit
-    sudo docker-compose up -d --no-deps server
+    sudo docker-compose up -d --no-deps api-server
     ;;
 web)
     sudo docker pull registry.gitlab.com/promises/deployment/webapp-vue:$WEBAPP_VUE_VERSION \
