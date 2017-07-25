@@ -27,6 +27,7 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_POOL_MIN_CONN=10
       - POSTGRES_POOL_MAX_CONN=100
+      - SENTRY_DSN
     extra_hosts:
       - "nova-cloud-controller.maas:172.20.0.14"
       - "keystone.maas:172.20.0.13" 
