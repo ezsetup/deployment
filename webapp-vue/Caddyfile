@@ -1,3 +1,6 @@
 :80 {
   root /var/www/html/dist/
+  rewrite {
+    to {path} {path}/ /
+  }
 }
