@@ -1,4 +1,4 @@
-source ../versions.sh
+source ../.env
 cd ../../webapp-vue \
     && npm run build
 cd ../deployment/webapp-vue \

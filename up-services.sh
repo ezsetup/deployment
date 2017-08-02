@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # MAIN
-source versions.sh
 
-cp versions.sh .env # .env is needed for docker-compose to read
+source .env # .env is needed for docker-compose to read
 
 if [ -z $POSTGRES_USER ]; then
     echo -e "\033[1;31m POSTGRES_USER needs to be set \033[0m"
@@ -21,15 +20,11 @@ if [ -z $API_SERVER_VERSION ]; then
     echo -e "\033[1;31m API_SERVER_VERSION needs to be set \033[0m"
     exit
 fi
-if [ -z $PG_VERSION ]; then
-    echo -e "\033[1;31m PG_VERSION needs to be set \033[0m"
-    exit
-fi
 if [ -z $WEBAPP_VUE_VERSION ]; then
     echo -e "\033[1;31m WEBAPP_VUE_VERSION needs to be set \033[0m"
     exit
 fi
-if [ -z $SENTRY_DSN]; then
+if [ -z $SENTRY_DSN ]; then
     echo -e "\033[1;31m SENTRY_DSN needs to be set \033[0m"
     exit
 fi
@@ -40,8 +35,6 @@ all)
     sudo docker pull registry.gitlab.com/promises/deployment/reverse-proxy:$REVERSE_PROXY_VERSION \
         && echo "OK" || exit
     sudo docker pull registry.gitlab.com/promises/deployment/api-server:$API_SERVER_VERSION \
-        && echo "OK" || exit
-    sudo docker pull registry.gitlab.com/promises/pg:$PG_VERSION \
         && echo "OK" || exit
     sudo docker pull registry.gitlab.com/promises/deployment/webapp-vue:$WEBAPP_VUE_VERSION \
         && echo "OK" || exit

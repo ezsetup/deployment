@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     ports:
     - "80:80"
+    - "443:443"
   reverse-proxy:
     image: registry.gitlab.com/promises/deployment/reverse-proxy:$REVERSE_PROXY_VERSION
     restart: unless-stopped
@@ -23,8 +24,8 @@ services:
       - REDIS_TOKEN_DB=1
       - POSTGRES_USER
       - POSTGRES_PASSWORD
-      - POSTGRES_HOST=pg
-      - POSTGRES_PORT=5432
+      - POSTGRES_HOST
+      - POSTGRES_PORT=5433
       - POSTGRES_POOL_MIN_CONN=10
       - POSTGRES_POOL_MAX_CONN=100
       - SENTRY_DSN
@@ -42,19 +43,4 @@ services:
     image: redis:3.2
     expose: 
       - "6379"
-  pg:
-    restart: unless-stopped
-    image: registry.gitlab.com/promises/pg:$PG_VERSION
-    expose:
-      - "5432"
-    volumes:
-      - pg-data-volume:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - PG_DATA=/var/lib/postgresql/data/pgdata
-
-volumes:
-  pg-data-volume:
-    
     

@@ -1,4 +1,4 @@
-source ../versions.sh
+source ../.env
 cd app
 git pull
 cd ..

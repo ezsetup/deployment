@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # MAIN
+source .env # .env is needed for docker-compose to read
+
 case $1 in
 all)
     sudo docker-compose down
