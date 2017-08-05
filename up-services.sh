@@ -50,9 +50,14 @@ web)
         && echo "OK" || exit
     sudo docker-compose up -d --no-deps web
     ;;
+reverse-proxy)
+    sudo docker pull registry.gitlab.com/promises/deployment/reverse-proxy:$REVERSE_PROXY_VERSION \
+        && echo "OK" || exit
+    sudo docker-compose up -d --no-deps reverse-proxy
+    ;;
 *)
     echo -e "\033[1;31m Wrong option \033[0m"
-    echo -e "\033[1;31m USAGE: bash $0 {all|api-server|web} \033[0m"
+    echo -e "\033[1;31m USAGE: bash $0 {all|api-server|web|reverse-proxy} \033[0m"
     exit
     ;;
 esac

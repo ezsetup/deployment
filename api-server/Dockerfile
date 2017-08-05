@@ -1,6 +1,6 @@
-FROM python:3.6
+FROM python:3.6.2
 
-RUN pip install gunicorn
+RUN pip install gunicorn~=19.7.1
 
 COPY app/ /var/www/
 
