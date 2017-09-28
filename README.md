@@ -18,7 +18,26 @@
 ## Dependencies
 - webapp-vue: 0.8.0
         - api-server: 0.8.0
-- api-server: 0.8.0
+- webapp-vue: 0.8.1
+        - api-server: 0.8.1
+- api-server: 0.8.0 - 0.8.1
         - pg: 0.12.0
 
+## .env content
+
+WEBAPP_VUE_VERSION=
+REVERSE_PROXY_VERSION=
+API_SERVER_VERSION=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_HOST=
+SENTRY_DSN=
+
+export WEBAPP_VUE_VERSION
+export REVERSE_PROXY_VERSION
+export API_SERVER_VERSION
+export POSTGRES_USER
+export POSTGRES_PASSWORD
+export POSTGRES_HOST
+export SENTRY_DSN
 
