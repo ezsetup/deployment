@@ -17,7 +17,7 @@
 
 ## Dependencies
 - webapp-vue: 0.9.0
-        - api-server: 0.9.0
+        - api-server: 0.9.1
                 - pg: 0.13.0
 - webapp-vue: 0.8.1
         - api-server: 0.8.1
