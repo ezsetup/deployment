@@ -12,12 +12,14 @@
 - install docker, docker-compose on target host
 - use `bash scp.sh` or manually copy `up-services.sh, down-services.sh, .env, docker-compose.yml` to the target host
 - ssh into the target host
+- run `sudo docker login registry.gitlab.com` or your registry address. No need
+  for this step if docker hub is used.
 - run `bash down-services.sh all && bash up-services.sh all` to update all services
 - or run `bash up-services.sh service-name` to update individual services
 
 ## Dependencies
 - webapp-vue: 0.9.0
-        - api-server: 0.9.1
+        - api-server: 0.9.2
                 - pg: 0.13.0
 - webapp-vue: 0.8.1
         - api-server: 0.8.1
