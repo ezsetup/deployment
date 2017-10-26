@@ -18,6 +18,12 @@
 - or run `bash up-services.sh service-name` to update individual services
 
 ## Dependencies
+- webapp-vue: 0.9.3
+        - api-server: 0.9.6-rc2
+                - pg: 0.16.1
+- webapp-vue: 0.9.1
+        - api-server: 0.9.4
+                - pg: 0.13.0
 - webapp-vue: 0.9.0
         - api-server: 0.9.2
                 - pg: 0.13.0
