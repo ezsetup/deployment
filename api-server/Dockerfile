@@ -1,14 +1,14 @@
 FROM python:3.6.2
 
-RUN pip install gunicorn~=19.7.1
+COPY gunicorn.conf /etc/
+
+RUN pip install gunicorn~=19.7.1 pipenv
 
 COPY app/ /var/www/
 
-RUN pip install -r /var/www/requirements.txt
-
-COPY gunicorn.conf /etc/
-
 WORKDIR /var/www/
+
+RUN pipenv install --system
 
 
 ENTRYPOINT ["gunicorn"]

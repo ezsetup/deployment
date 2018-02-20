@@ -1,5 +1,5 @@
 :5002 {
-  proxy / api-server:8080 {
+  proxy / {$API_HOST}:8080 {
     transparent
   }
   log stdout
