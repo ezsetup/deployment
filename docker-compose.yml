@@ -29,6 +29,34 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - REDIS_TOKEN_DB=1
+      - REDIS_JOBS_DB=2
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_HOST
+      - POSTGRES_PORT=5433
+      - POSTGRES_POOL_MIN_CONN=10
+      - POSTGRES_POOL_MAX_CONN=100
+      - SENTRY_DSN
+    extra_hosts:
+      - "controller.nova.maas:172.16.0.7"
+      - "api.neutron.maas:172.16.0.10"
+      - "cinder.maas:172.16.0.255"
+      - "glance.maas:172.16.1.0"
+      - "heat.maas:172.16.1.1"
+      - "swift.maas:172.16.0.9"
+      - "keystone.maas:172.16.0.6"
+      - "horizon.maas:172.16.0.8"
+
+  worker:
+    image: registry.gitlab.com/promises/deployment/worker:$API_SERVER_VERSION
+    restart: unless-stopped
+    expose:
+        - "8080"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_TOKEN_DB=1
+      - REDIS_JOBS_DB=2
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_HOST

@@ -36,6 +36,8 @@ all)
         && echo "OK" || exit
     sudo docker pull registry.gitlab.com/promises/deployment/api-server:$API_SERVER_VERSION \
         && echo "OK" || exit
+    sudo docker pull registry.gitlab.com/promises/deployment/worker:$API_SERVER_VERSION \
+        && echo "OK" || exit
     sudo docker pull registry.gitlab.com/promises/deployment/webapp-vue:$WEBAPP_VUE_VERSION \
         && echo "OK" || exit
     sudo docker-compose up -d
