@@ -5,23 +5,23 @@ networks:
     driver_opts:
       com.docker.network.driver.mtu: 1400
 services:
-  web:
-    image: registry.gitlab.com/promises/deployment/webapp-vue:$WEBAPP_VUE_VERSION
+  frontend:
+    image: ezsetup/frontend:latest
     restart: unless-stopped
     ports:
     - "80:80"
     - "443:443"
 
   reverse-proxy:
-    image: registry.gitlab.com/promises/deployment/reverse-proxy:$REVERSE_PROXY_VERSION
+    image: ezsetup/reverse-proxy:latest
     restart: unless-stopped
     ports: 
     - "5002:5002"
     environment:
-      - API_HOST=api-server
+      - API_HOST=api
 
-  api-server:
-    image: registry.gitlab.com/promises/deployment/api-server:$API_SERVER_VERSION
+  api:
+    image: ezsetup/api:latest
     restart: unless-stopped
     expose:
         - "8080"
@@ -33,7 +33,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_HOST
-      - POSTGRES_PORT=5433
+      - POSTGRES_PORT=5432
       - POSTGRES_POOL_MIN_CONN=10
       - POSTGRES_POOL_MAX_CONN=100
       - SENTRY_DSN
@@ -48,7 +48,7 @@ services:
       - "horizon.maas:172.16.0.8"
 
   worker:
-    image: registry.gitlab.com/promises/deployment/worker:$API_SERVER_VERSION
+    image: ezsetup/worker:latest
     restart: unless-stopped
     expose:
         - "8080"
