@@ -10,7 +10,4 @@ WORKDIR /var/www/
 
 RUN pipenv install --system
 
-
-ENTRYPOINT ["gunicorn"]
-
-CMD ["-c", "/etc/gunicorn.conf", "app:app"]
+ENTRYPOINT ["python create_root.py && gunicorn -c /etc/gunicorn.conf app:app"]
