@@ -6,8 +6,12 @@ RUN pip install gunicorn~=19.7.1 pipenv
 
 COPY app/ /var/www/
 
+COPY run.sh /var/www/
+
 WORKDIR /var/www/
 
 RUN pipenv install --system
 
-ENTRYPOINT ["python create_root.py && gunicorn -c /etc/gunicorn.conf app:app"]
+RUN chmod +x ./run.sh
+
+ENTRYPOINT ["./run.sh"]
